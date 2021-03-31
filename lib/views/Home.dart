@@ -80,18 +80,22 @@ class _Home extends State<Home> {
                   ? Container(
                       child: CircularProgressIndicator(),
                     )
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: articles.length,
-                      itemBuilder: (contex, index) {
-                        final artic = articles[index];
+                  : SingleChildScrollView(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: articles.length,
+                        itemBuilder: (contex, index) {
+                          final artic = articles[index];
 
-                        return CardNews(
-                          imagUrl: artic.urlToImage,
-                          title: artic.title,
-                          desc: artic.description,
-                        );
-                      },
+                          return SingleChildScrollView(
+                            child: CardNews(
+                              imagUrl: artic.urlToImage,
+                              title: artic.title,
+                              desc: artic.description,
+                            ),
+                          );
+                        },
+                      ),
                     ),
             ],
           ),
